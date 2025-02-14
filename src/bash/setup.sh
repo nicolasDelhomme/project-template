@@ -74,7 +74,7 @@ echo \
 1. You know need to create the doc/sample_sheet.csv file
 2. Validate the nf-params.json and upscb.config file in the nextflow directory
 3. Commit the newly created files
-4. Run the nextflow pipeline using the parameters: -profile singularity,upscb -c nextflow/slurm.config -params-file nextflow/nf-params.json
+4. Run the nextflow pipeline using the parameters: -profile singularity,upscb -c nextflow/slurm.config -params-file nextflow/nf-params.json -with-trace -with-report report_$(date "+%Y_%m_%d").html
 
 Lycka till!
 "
