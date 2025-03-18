@@ -17,6 +17,7 @@ source "functions.sh"
 # set variables
 
 # default
+HELP=
 PI=
 PIPELINE="rnaseq"
 
@@ -26,8 +27,21 @@ USAGETXT=\
 Usage: $0 [options] <slurm account> <species> <version>
     Options:
         g: PIs group name. Create the project directory within the PI's project folder. Off by default.
+        h: display the help
         p: Set the pipeline template to use, default to ${PIPELINE}
 "
+
+while getopts g:hp: option
+do
+        case "$option" in
+        g) PI=${OPTARG};;
+        h) usage;;
+        p) PIPELINE=${OPTARG};;
+		\?) ## unknown flag
+		usage;;
+        esac
+done
+shift $((OPTIND - 1))
 
 # get the command line args (species and version)
 ACCOUNT=
